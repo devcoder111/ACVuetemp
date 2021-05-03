@@ -1,0 +1,154 @@
+{
+	"jsondev":{
+		"screenMetadata": {
+			"container": "core",
+			"entity": "",
+			"entityId": "1234",
+			"lang": "de",
+			"entityName": "Trevor McCloud",
+			"entityIcon": "mdi-account"
+		},
+		"data": {
+			"tableData": [{
+				"entityid": "123",
+				"phon_type": "Business",
+				"phonenumber": "+252 324 3423"
+			}],
+			"tableColumns": [{
+				"fixed": true,
+				"prop": "phon_type",
+				"label": "Type",
+				"width": "150px",
+				"minWidth": "150px"
+			}, {
+				"fixed": true,
+				"prop": "phonenumber",
+				"label": "Number",
+				"width": "250px",
+				"minWidth": "250px"
+			}]
+		}
+	},	
+	"phone":{
+		"screenMetadata": {
+			"container": "core",
+			"entity": "",
+			"entityId": "1234",
+			"lang": "de",
+			"entityName": "Trevor McCloud",
+			"entityIcon": "mdi-account"
+		},
+		"data": {
+			"tableData": [{
+				"entityid": "123",
+				"phon_type": "Business",
+				"phonenumber": "+252 324 3423"
+			}],
+			"tableColumns": [{
+				"fixed": true,
+				"prop": "phon_type",
+				"label": "Type",
+				"width": "150px",
+				"minWidth": "150px"
+			}, {
+				"fixed": true,
+				"prop": "phonenumber",
+				"label": "Number",
+				"width": "250px",
+				"minWidth": "250px"
+			}]
+		}
+	},
+	"addressBookData": {
+		"screenMetadata": {
+			"container": "core",
+			"lang": "de"
+		},
+		"data": {
+			"tableData": [{
+				"entityid": "123",
+				"fullname": "Frank Jonex",
+				"emailaddress": "frank@jonex.com"
+			}, {
+				"entityid": "1234",
+				"fullname": "Frank Jonex",
+				"emailaddress": "rach@rwhites.com"
+			}, {
+				"entityid": "12345",
+				"fullname": "Frank Jonex",
+				"emailaddress": ""
+			}],
+			"tableColumns": [{
+				"fixed": true,
+				"prop": "fullname",
+				"label": "fullname",
+				"width": "150px",
+				"minWidth": "150px"
+			}, {
+				"fixed": true,
+				"prop": "emailaddress",
+				"label": "emailaddress",
+				"width": "250",
+				"minWidth": "150px"
+			}]
+		}
+	},
+	"historyData": {
+		"screenMetadata": {
+			"container": "core",
+			"entity": "",
+			"entityId": "",
+			"entityOptions": [{
+				"label": "All",
+				"value": "all",
+				"selected": true
+			}, {
+				"label": "Company",
+				"value": "company",
+				"selected": false
+			}, {
+				"label": "Person",
+				"value": "person",
+				"selected": false
+			}, {
+				"label": "Cases",
+				"value": "cases",
+				"selected": false
+			}, {
+				"label": "Opportunity",
+				"value": "opportunity",
+				"selected": false
+			}],
+			"lang": "de",
+			"entityOptionsDefault": "All"
+		},
+		"data": {
+			"tableData": [{
+				"entityid": "123",
+				"entityType": "Company",
+				"entityName": "Franks Inc"
+			}, {
+				"entityid": "1234",
+				"entityType": "Company",
+				"entityName": "From JASON"
+			}, {
+				"entityid": "12345",
+				"entityType": "Person",
+				"entityName": "Jones ABBE"
+			}],
+			"tableColumns": [{
+				"fixed": true,
+				"prop": "entityType",
+				"label": "Type",
+				"width": "150px",
+				"minWidth": "150px"
+			}, {
+				"fixed": true,
+				"prop": "entityName",
+				"label": "Name",
+				"width": "250",
+				"minWidth": "150px"
+			}]
+		}
+	}
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <script>
+      function checkContainer()
+      {
+        let _location=new String(location);
+        console.log('_location:'+_location);
+        if ((_location.indexOf("outlook365")>0)||(_location.indexOf("et=#")>0))
+        {
+          var script = document.createElement("script");
+          script.type = "text/javascript";
+          script.src = "https://appsforoffice.microsoft.com/lib/1/hosted/office.js";
+          document.head.appendChild(script);
+          console.log('core page script loaded');
+        }
+      }
+      checkContainer();
+
+      function Office365ContaineritemChanged(eventArgs) {
+        // Update UI based on the new current item
+        console.log("Office365ContaineritemChanged:"+JSON.stringify(eventArgs));
+
+        //build our email object
+        let _EmailData={
+          "from": {
+            "displayName":Office.context.mailbox.item.from.displayName,
+            "emailAddress":Office.context.mailbox.item.from.emailAddress,
+            "type":Office.context.mailbox.item.from.recipientType,
+          },
+          "replyto": {  
+            "displayName":Office.context.mailbox.item.from.displayName,
+            "emailAddress":Office.context.mailbox.item.from.emailAddress,
+            "type":Office.context.mailbox.item.from.recipientType,
+          },
+          "fullName":Office.context.mailbox.item.from.displayName,
+          "phoneNumbers":[],
+          "to":_parse365Recipients(Office.context.mailbox.item.to),
+          "cc":_parse365Recipients(Office.context.mailbox.item.cc),
+          "bcc":_parse365Recipients(Office.context.mailbox.item.bcc),
+          "subject":Office.context.mailbox.item.subject,
+          "body":"...",
+          "htmlBody":"...",
+          "attachments":_parse365Attachments(Office.context.mailbox.item),
+          "entryid":Office.context.mailbox.item.itemId,
+          "urls":[],
+          "addresses":[],
+          "sentItem":false,
+          "receivedDateTime":_parse365SentDates(Office.context.mailbox.item),
+          "sentDateTime":_parse365SentDates(Office.context.mailbox.item),
+          "companies":"",
+        }
+
+        Office.context.mailbox.item.body.getAsync('text', function(result){
+            if (result.status === 'succeeded') {
+              _EmailData.body=result.value.replace(/\n\n\n\n/, '');
+            }
+        });
+          
+        Office.context.mailbox.item.body.getAsync('html', function(result){
+            if (result.status === 'succeeded') {
+              _EmailData.htmlBody=result.value;
+            }
+        });
+        console.log("_EmailData:"+JSON.stringify(_EmailData));
+        // eslint-disable-next-line
+        vueAppInstance.$mailbox.changeSelectedEmail(JSON.stringify(_EmailData));
+      }      
+
+      function _parse365SentDates(_Mailitem)
+      {
+        let _date=_Mailitem.dateTimeCreated;
+
+        let res={
+          "year":_date.getFullYear(),
+          "month":_date.getMonth()+1,
+          "day":_date.getDate(),
+          "hour":_date.getHours(),
+          "minute":_date.getMinutes(),
+          "second":_date.getSeconds(),
+          "raw": _date.toLocaleString(),
+          "rawutc":_date.getUTCDate()
+        }
+        return res;
+      }
+
+      function _parse365Attachments(item){
+        let res=[];
+        if (item.attachments.length > 0) 
+        {
+          for (i = 0 ; i < item.attachments.length ; i++) {
+              var attachment = item.attachments[i];
+              var _att={
+                "id":attachment.id,
+                "name":attachment.name,
+                "caption":attachment.name,
+                "size":attachment.size,
+                "filename":attachment.name,
+                "type": attachment.contentType,
+                "base64":"",
+                "value":true
+              }
+              res.push(_att);
+          }
+        }
+        return res;
+      }
+
+      function _parse365Recipients(recObj){
+        let rec_res=[];
+        for (var ff=0;ff<recObj.length;ff++)
+        {
+          _rec={
+            "displayName":recObj[ff].displayName,
+            "emailAddress":recObj[ff].emailAddress,
+            "type":recObj[ff].recipientType,
+          }
+          rec_res.push(_rec);
+        }
+        return rec_res;
+      }
+
+      function setup365Container()
+      {
+        console.log("setup365Container");
+        let _location=new String(location);
+        if (_location.indexOf("mytaskpane")>0)
+        {
+          // Set up ItemChanged event
+          console.log("Set up ItemChanged event");
+          Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, Office365ContaineritemChanged);
+        }
+      }
+
+    </script>
+
+    <script src="tsoutlook.js" ></script>
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <!--
+      Office 365...comment out for local client
+
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+        -->
+    <style>
+      #loading-wrapper {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+      }
+    
+      #loading-text {
+        display: block;
+        position: absolute;
+        top: 48%;
+        left: 48%;
+        color: rgb(20, 121, 60);
+        width: 100px;
+        height: 30px;
+        margin: -7px 0 0 -45px;
+        text-align: center;
+        font-family: 'PT Sans Narrow', sans-serif;
+        font-size: 14px;
+      }
+    
+      #loading-content {
+        display: block;
+        position: relative;
+        left: 48%;
+        top: 48%;
+        width: 250px;
+        height: 250px;
+        margin: -85px 0 0 -105px;
+        border: 3px solid #F00;
+      }
+    
+      #loading-content {
+        border: 3px solid transparent;
+        border-top-color:#662d90;
+        border-bottom-color: #662d90;
+        border-radius: 50%;
+        -webkit-animation: loader 2s linear infinite;
+        -moz-animation: loader 2s linear infinite;
+        -o-animation: loader 2s linear infinite;
+        animation: loader 2s linear infinite;
+      }
+    
+      @keyframes loader {
+        0% {
+          -webkit-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+    
+        100% {
+          -webkit-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+</head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+
+      <div id="loading-wrapper">
+        <div id="loading-text">crmtogether.com</div>
+        <div id="loading-content"></div>
+      </div>
+
+    </div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
