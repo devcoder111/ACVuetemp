@@ -1,0 +1,86 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-vuehtmlui-dev-175531-authRole",
+            "UnauthRoleArn": "arn:aws:iam::666711029314:role/amplify-vuehtmlui-dev-175531-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::666711029314:role/amplify-vuehtmlui-dev-175531-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-vuehtmlui-dev-175531-deployment",
+            "UnauthRoleName": "amplify-vuehtmlui-dev-175531-unauthRole",
+            "StackName": "amplify-vuehtmlui-dev-175531",
+            "StackId": "arn:aws:cloudformation:eu-west-1:666711029314:stack/amplify-vuehtmlui-dev-175531/892ba090-55c8-11eb-ab4a-0279a1c6262b",
+            "AmplifyAppId": "d13olhojkfwdhi"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d13olhojkfwdhi",
+                    "type": "manual"
+                }
+            }
+        }
+    },
+    "devowa": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-vuehtmlui-devowa-115955-authRole",
+            "UnauthRoleArn": "arn:aws:iam::666711029314:role/amplify-vuehtmlui-devowa-115955-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::666711029314:role/amplify-vuehtmlui-devowa-115955-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-vuehtmlui-devowa-115955-deployment",
+            "UnauthRoleName": "amplify-vuehtmlui-devowa-115955-unauthRole",
+            "StackName": "amplify-vuehtmlui-devowa-115955",
+            "StackId": "arn:aws:cloudformation:eu-west-1:666711029314:stack/amplify-vuehtmlui-devowa-115955/54b60cb0-6617-11eb-86ab-02b92ccedb3d",
+            "AmplifyAppId": "d13olhojkfwdhi"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d13olhojkfwdhi",
+                    "type": "manual"
+                }
+            }
+        }
+    },
+    "aclive": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-vuehtmlui-aclive-154501-authRole",
+            "UnauthRoleArn": "arn:aws:iam::666711029314:role/amplify-vuehtmlui-aclive-154501-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::666711029314:role/amplify-vuehtmlui-aclive-154501-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-vuehtmlui-aclive-154501-deployment",
+            "UnauthRoleName": "amplify-vuehtmlui-aclive-154501-unauthRole",
+            "StackName": "amplify-vuehtmlui-aclive-154501",
+            "StackId": "arn:aws:cloudformation:eu-west-1:666711029314:stack/amplify-vuehtmlui-aclive-154501/e818e910-8349-11eb-915f-02cce704e37f",
+            "AmplifyAppId": "d13olhojkfwdhi"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d13olhojkfwdhi",
+                    "type": "manual"
+                }
+            }
+        }
+    },
+    "luishost": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-vuehtmlui-luishost-00009-authRole",
+            "UnauthRoleArn": "arn:aws:iam::666711029314:role/amplify-vuehtmlui-luishost-00009-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::666711029314:role/amplify-vuehtmlui-luishost-00009-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-vuehtmlui-luishost-00009-deployment",
+            "UnauthRoleName": "amplify-vuehtmlui-luishost-00009-unauthRole",
+            "StackName": "amplify-vuehtmlui-luishost-00009",
+            "StackId": "arn:aws:cloudformation:eu-west-1:666711029314:stack/amplify-vuehtmlui-luishost-00009/d18ffd50-a383-11eb-a526-0a1b5e0eee5d",
+            "AmplifyAppId": "d13olhojkfwdhi"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d13olhojkfwdhi",
+                    "type": "manual"
+                }
+            }
+        }
+    }
+}
